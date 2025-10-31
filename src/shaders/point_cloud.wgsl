@@ -4,7 +4,8 @@ struct CameraUniforms {
     proj: mat4x4<f32>,
     proj_inv: mat4x4<f32>,
     viewport: vec2<f32>,
-    focal: vec2<f32>
+    focal: vec2<f32>,
+    fov: vec2<f32>,
 };
 
 struct Gaussian {
@@ -35,7 +36,7 @@ fn vs_main(
     let pos = vec4<f32>(a.x, a.y, b.x, 1.);
 
     // TODO: MVP calculations
-    out.position = pos;
+    out.position = camera.proj * camera.view * pos;
 
     return out;
 }

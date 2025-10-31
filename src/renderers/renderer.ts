@@ -151,6 +151,7 @@ export default async function init(
   function frame() {
     if (ply_file_loaded && cam_file_loaded) {
       params.fps=1.0/timeReturn()*1000.0;
+      console.log(`Time: ${timeReturn().toFixed(2)} ms`);
       time();
       const encoder = device.createCommandEncoder();
       const texture_view = context.getCurrentTexture().createView();
